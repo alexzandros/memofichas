@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Jajajajaja</title>
+    <style>
+      .mueve
+      {
+        animation-name:pasa_carta;
+        animation-duration:2s;
+          animation-timing-function: linear;
+        -webkit-animation-name:pasa_carta_wk;
+        -webkit-animation-duration:2s;
+          -webkit-animation-timing-finction:linear;
+        
+      }
+
+      @keyframes pasa_carta
+      {
+          0%{z-index: 32500;}
+        20% {transform:translateX(9.5cm)}
+        50%{transform:translateZ(-6.5cm) rotateY(-45deg) rotateX(15deg);}
+        80%{transform:translateX(-9.5cm) rotateY(45deg);}
+        100%{}
+      }
+
+      @-webkit-keyframes pasa_carta_wk
+      {
+        20%{-webkit-transform:translateX(6.5cm);}
+        40%{-webkit-transform:translateZ(-2.5cm) rotateY(-45deg);}
+        80%{-webkit-transform:translateX(-6.5cm) rotateY(45deg);}
+        100%{}
+      }
+
+
+      .mazo
+      {
+        perspective:800px;
+
+      }
+      .mazo>section
+      {
+        position:absolute;
+        border:solid 1px;
+        left:2cm;
+        top:1cm;
+        width:9cm;
+        height:15cm;
+        background-color:rgb(192,128,128);
+        
+      }
+    </style>
+    <script>
+      var cartas=Array();
+      var i=0;
+      function generar()
+      {
+        seleccion=document.querySelectorAll(".mazo>section");
+        for (i=0;i<seleccion.length;i++)
+        {
+          seleccion[i].style.zIndex=seleccion.length-i;
+          cartas.push(seleccion[i]);
+
+        }
+      }
+
+      function cartaSiguiente()
+      {
+        cartas.sort(function(a,b){
+          return b.style.zIndex-a.style.zIndex;
+        });
+        cartas[0].className="mueve";
+        cartas[0].style.zIndex=0;
+        tope=cartas.shift();
+        cartas.push(tope);
+        for (i=0;i<cartas.length;i++)
+        {
+          cartas[i].style.zIndex=cartas.length-i;
+
+        }
+      }
+
+    </script>
+  </head>
+  <body onload="generar();">
+    <div class="mazo">
+      <section>
+        Carta 1
+      </section>
+      <section>
+        Carta 2
+      </section>
+      <section>
+        Carta 3
+      </section>
+      <section>
+        Carta 4
+      </section>
+      <section>
+        Carta 5
+      </section>
+    </div>
+    <button onclick="cartaSiguiente();">Siguiente</button>
+  </body>
+</html>
