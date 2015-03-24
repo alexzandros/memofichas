@@ -8,20 +8,22 @@
       {
         animation-name:pasa_carta;
         animation-duration:2s;
-          animation-timing-function: linear;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
         -webkit-animation-name:pasa_carta_wk;
         -webkit-animation-duration:2s;
-          -webkit-animation-timing-finction:linear;
+        -webkit-animation-timing-function:linear;
+        -webkit-animation-iteration-count:infinite;
         
       }
 
       @keyframes pasa_carta
       {
-          0%{z-index: 32500;}
+          0%{}
         20% {transform:translateX(9.5cm)}
         50%{transform:translateZ(-6.5cm) rotateY(-45deg) rotateX(15deg);}
         80%{transform:translateX(-9.5cm) rotateY(45deg);}
-        100%{}
+        100%{transform: translateZ(-10px);}
       }
 
       @-webkit-keyframes pasa_carta_wk
@@ -29,13 +31,14 @@
         20%{-webkit-transform:translateX(6.5cm);}
         40%{-webkit-transform:translateZ(-2.5cm) rotateY(-45deg);}
         80%{-webkit-transform:translateX(-6.5cm) rotateY(45deg);}
-        100%{}
+        100%{-webkit-transform:translateZ(-10px);}
       }
 
 
       .mazo
       {
         perspective:800px;
+          transform-style: preserve-3d;
 
       }
       .mazo>section
@@ -47,6 +50,7 @@
         width:9cm;
         height:15cm;
         background-color:rgb(192,128,128);
+        padding: 15px;
         
       }
     </style>
@@ -58,7 +62,7 @@
         seleccion=document.querySelectorAll(".mazo>section");
         for (i=0;i<seleccion.length;i++)
         {
-          seleccion[i].style.zIndex=seleccion.length-i;
+          seleccion[i].style.transform="translateZ("+(-i*1)+"px)";  
           cartas.push(seleccion[i]);
 
         }
@@ -66,18 +70,28 @@
 
       function cartaSiguiente()
       {
-        cartas.sort(function(a,b){
-          return b.style.zIndex-a.style.zIndex;
-        });
-        cartas[0].className="mueve";
-        cartas[0].style.zIndex=0;
-        tope=cartas.shift();
-        cartas.push(tope);
-        for (i=0;i<cartas.length;i++)
-        {
-          cartas[i].style.zIndex=cartas.length-i;
-
-        }
+          cartas.sort(function(a,b){
+              patron=RegExp("\(-?(\\d*)px\)");
+              indiceA=parseInt(patron.exec(a.style.transform));
+              indiceB=parseInt(patron.exec(b.style.transform));
+              return indiceB-indiceA;
+          });
+          if(cartas[0].style.animation!="")
+          {
+              cartas[0].style.animationPlayState="running";
+              return;
+          }
+          cartas[0].style.animation="pasa_carta 1.5s linear infinite";
+          cartas[0].style.WebkitAnimation="pasa_carta 2s linear infinite";
+          cartas[0].addEventListener("animationiteration",function(){
+            this.style.animationPlayState="paused";
+            temp=cartas.shift();
+            cartas.push(temp);
+            for (i=0;i<seleccion.length;i++)
+            {
+                cartas[i].style.transform="translateZ("+(-i*1)+"px)";  
+            }
+          });            
       }
 
     </script>
@@ -85,10 +99,15 @@
   <body onload="generar();">
     <div class="mazo">
       <section>
-        Carta 1
+          <h1>Carta 1</h1>
+          
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+          
       </section>
       <section>
-        Carta 2
+        <h1>Carta 2</h1>
+          <img src="images/Paisaje-Natural.jpg" width="320" alt="jajajaj"/>
+          
       </section>
       <section>
         Carta 3
