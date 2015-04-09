@@ -1,0 +1,21 @@
+.mazo
+    {
+        perspective:800px;
+        transform-style: preserve-3d;
+
+    } 
+.mazo>section
+{
+    position:absolute;
+    border:solid 1px;
+    left:2cm;
+    top:1cm;
+    width:9cm;
+    height:15cm;
+    background-color:rgb(192,128,128);
+    padding: 15px;
+    overflow: hidden;
+    text-align: justify;
+    transform-style: preserve-3d;
+    transition: transform 1.5s 
+}

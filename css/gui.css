@@ -1,0 +1,52 @@
+      .mueve
+      {
+        animation-name:pasa_carta;
+        animation-duration:2s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        -webkit-animation-name:pasa_carta_wk;
+        -webkit-animation-duration:2s;
+        -webkit-animation-timing-function:linear;
+        -webkit-animation-iteration-count:infinite;
+        
+      }
+
+      @keyframes pasa_carta
+      {
+          0%{}
+        20% {transform:translateX(9.5cm);}
+        50%{transform:translateZ(-6.5cm) rotateY(-45deg) rotateX(15deg);}
+        80%{transform:translateX(-9.5cm) rotateY(45deg);}
+        100%{}
+      }
+
+      @-webkit-keyframes pasa_carta_wk
+      {
+		0%{}
+        20%{-webkit-transform:translateX(9.5cm);}
+        50%{-webkit-transform:translateZ(-6.5cm) rotateY(-45deg) rotateX(15deg);}
+        80%{-webkit-transform:translateX(-9.5cm) rotateY(45deg);}
+		100%{}
+      }
+
+
+      .mazo
+      {
+        perspective:800px;
+          transform-style: preserve-3d;
+
+      }
+      .mazo>section
+      {
+        position:absolute;
+        border:solid 1px;
+        left:2cm;
+        top:1cm;
+        width:9cm;
+        height:15cm;
+        background-color:rgb(192,128,128);
+        padding: 15px;
+        overflow: hidden;
+        text-align: justify;
+		transform-style: preserve-3d;
+      }
