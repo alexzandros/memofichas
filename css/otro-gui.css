@@ -1,3 +1,8 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
 .mazo
     {
         perspective:800px;
@@ -7,15 +12,16 @@
 .mazo>section
 {
     position:absolute;
-    border:solid 1px;
-    left:2cm;
-    top:1cm;
-    width:9cm;
-    height:15cm;
-    background-color:rgb(192,128,128);
+    border:solid 2px;
+    width:90vw;
+    height:92vh;
+    background: linear-gradient(to right,rgba(127,127,223,1),rgba(192,192,255,1));
+    margin: 0px;
     padding: 15px;
     overflow: hidden;
     text-align: justify;
     transform-style: preserve-3d;
-    transition: transform 1.5s 
+    transition: transform 1s;
+    font-size: 3vw;
+    font-family: sans-serif;
 }

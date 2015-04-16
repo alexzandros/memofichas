@@ -10,8 +10,8 @@ function generar() {
         }
       }
 function cartaSiguiente(){
-    cartas[0].style.transform = "translateX(300px)";
-    cartas[0].style.WebkitTransform = "translateX(300px)";
+    cartas[0].style.transform = "translateX(100vw)";
+    cartas[0].style.WebkitTransform = "translateX(100vw)";
     setTimeout(function(){
         temp = cartas.shift();
         cartas.push(temp);
@@ -20,5 +20,5 @@ function cartaSiguiente(){
             cartas[i].style.WebkitTransform = "translateZ("+ (-i * 1) + "px)";
             cartas[i].setAttribute("data-indice",i);
             }
-    },1500);    
+    },1000);    
 }
