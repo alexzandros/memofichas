@@ -25,3 +25,8 @@
     font-size: 3vw;
     font-family: sans-serif;
 }
+
+video, img 
+{
+    width: 80%;   
+}
