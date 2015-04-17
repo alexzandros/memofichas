@@ -15,7 +15,7 @@
     border:solid 2px;
     width:90vw;
     height:92vh;
-    background: linear-gradient(to right,rgba(127,127,223,1),rgba(192,192,255,1));
+    background: linear-gradient(to right,rgba(192,192,255,1),rgba(232,232,255,1));
     margin: 0px;
     padding: 15px;
     overflow: hidden;
@@ -28,5 +28,14 @@
 
 video, img 
 {
-    width: 80%;   
+    width: 90%;   
+}
+h1
+{
+    text-align: center;
+    margin-bottom: 1em;
+}
+p
+{
+    margin: 1em 0;
 }
