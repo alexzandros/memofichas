@@ -10,6 +10,7 @@ function generar() {
         }
       }
 function cartaSiguiente(){
+    cartas[0].style.opacity=0.75;
     cartas[0].style.transform = "translateX(100vw)";
     cartas[0].style.WebkitTransform = "translateX(100vw)";
     setTimeout(function(){
@@ -18,6 +19,7 @@ function cartaSiguiente(){
         for (i = 0; i < cartas.length; i++) {
             cartas[i].style.transform = "translateZ("+ (-i * 1) + "px)"; 
             cartas[i].style.WebkitTransform = "translateZ("+ (-i * 1) + "px)";
+            cartas[i].style.opacity=1;
             cartas[i].setAttribute("data-indice",i);
             }
     },1000);    
